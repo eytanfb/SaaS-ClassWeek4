@@ -57,5 +57,14 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
+  
+  # add to movies_controller.rb, anywhere inside
+  #  'class MoviesController < ApplicationController':
+
+  def search_tmdb
+    # hardwire to simulate failure
+    flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+    redirect_to movies_path :sort => session[:sort], :ratings => session[:ratings]
+  end
 
 end
